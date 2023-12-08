@@ -5,7 +5,6 @@ export const Barstool = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    // Fetch data from the JSON file
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -13,7 +12,7 @@ export const Barstool = () => {
         );
         setArticles(response.data);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.log(error);
       }
     };
 
@@ -22,11 +21,11 @@ export const Barstool = () => {
 
   return (
     <div>
-      <h1>Barstool Archive</h1>
+      <h1>Article List</h1>
       <ul>
         {articles.map((article) => (
-          <li key={article.id}>
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
+          <li>
+            <a href={article.url}>
               <h2>{article.title}</h2>
             </a>
             <img
