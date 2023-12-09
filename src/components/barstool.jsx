@@ -3,13 +3,12 @@ import axios from "axios";
 
 export const Barstool = () => {
   const [articles, setArticles] = useState([]);
+  const jsonUrl = "https://www.jalirani.com/files/barstool.json";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://www.jalirani.com/files/barstool.json"
-        );
+        const response = await axios.get(jsonUrl);
         setArticles(response.data);
       } catch (error) {
         console.log(error);
@@ -20,7 +19,7 @@ export const Barstool = () => {
   }, []);
 
   return (
-    <div>
+    <div className="articlelist">
       <h1>Article List</h1>
       <ul>
         {articles.map((article) => (
